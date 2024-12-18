@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-const postsDirectory = path.resolve('src/posts');
+const postsDirectory = path.resolve('static/posts');
 
 export async function load() {
 	const filenames = fs.readdirSync(postsDirectory);

@@ -7,7 +7,7 @@ import html from 'remark-html';
 export async function load({ params }) {
 	const { slug } = params;
 
-	const filePath = path.resolve('src/posts', `${slug}.md`);
+	const filePath = path.resolve('static/posts', `${slug}.md`);
 	const fileContent = fs.readFileSync(filePath, 'utf-8');
 
 	const { data, content } = matter(fileContent);
