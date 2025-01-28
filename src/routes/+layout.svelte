@@ -3,16 +3,50 @@
 </script>
 
 <main>
-	<nav>
-		<a href="/">home</a>
-		<a href="/blog">blog</a>
-		<a href="/about">about</a>
-	</nav>
+	<header>
+		<nav id="menu">
+			<ul>
+				<li>
+					<a href="/">home</a>
+				</li>
+				<li>
+					<a href="/posts">blog</a>
+				</li>
+				<!-- <li>
+					<a href="/about">about</a>
+				</li> -->
+			</ul>
+		</nav>
+	</header>
 	<slot />
 </main>
 
 <style>
-	nav {
+	main {
+		position: relative;
+		height: 100vh;
+	}
+
+	header {
+		box-sizing: border-box;
+		display: flex;
+		justify-content: flex-end;
+		padding: 1rem;
+		position: relative;
+		width: 100%;
+	}
+
+	nav ul {
+		display: flex;
+		gap: 1rem;
+		list-style: none;
+		margin: 0;
+	}
+
+	/* .menu[aria-hidden='false'] {
+		display: block;
+	} */
+	/* nav {
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
@@ -26,5 +60,5 @@
 	a:hover {
 		transform: rotate(-10deg);
 		transition: transform 0.1s ease-out;
-	}
+	} */
 </style>

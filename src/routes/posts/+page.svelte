@@ -6,12 +6,12 @@
 
 <div class="posts">
 	{#each data.posts as post}
-		<a href={`/blog/${post.slug}`}>
+		<a href={`/posts/${post.slug}`}>
 			<card>
-				<h3>{post.metadata.title}</h3>
+				<h3>{post.title}</h3>
 				<p>
-					{post.metadata.subtitle} -
-					<span class="published-at">{formattedDate(post.metadata.date)}</span>
+					{post.subtitle} -
+					<span class="published-at">{formattedDate(post.date)}</span>
 				</p>
 			</card>
 		</a>
@@ -35,14 +35,20 @@
 	}
 
 	card:hover {
-		background-color: #c8c8c8;
+		background-color: #ffde21;
 		color: #181818;
 		transform: translateY(10%);
 		transition: all 0.2s ease-in-out;
 	}
 
+	card:hover h3 {
+		color: #181818;
+	}
+
 	h3 {
-		text-transform: uppercase;
+		color: #ffde21;
+		font-size: 3.2rem;
+		font-weight: 400;
 	}
 
 	.published-at {
