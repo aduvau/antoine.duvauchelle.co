@@ -5,15 +5,15 @@
 </script>
 
 <svelte:head>
-	<title>{data.meta.title}</title>
+	<title>{`${data.meta.title} - Antoine Duvauchelle`}</title>
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={data.meta.title} />
+	<meta property="og:title" content={`${data.meta.title} - Antoine Duvauchelle`} />
 </svelte:head>
 
 <article>
 	<hgroup>
 		<h1>{data.meta.title}</h1>
-		<p>Published at {formattedDate(data.meta.date)}</p>
+		<p>Publié le {formattedDate(data.meta.date)}</p>
 	</hgroup>
 
 	<div class="tags">

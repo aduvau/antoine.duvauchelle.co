@@ -1,86 +1,79 @@
-<script lang="ts">
-	// const container = document.querySelector('container');
-
-	// const w: number = container?.clientWidth ?? 0;
-	// const nW: number = w / 40;
-
-	// const h: number = container?.clientHeight ?? 0;
-	// const nH: number = h / 40;
-
-	// const elements: number = nW * nH;
-
-	// const moves = ['U', 'D', 'L', 'R'];
-	// const antonyms: { [key: string]: string } = {
-	// 	U: 'D',
-	// 	D: 'U',
-	// 	L: 'R',
-	// 	R: 'L'
-	// };
-	// const directions: { [key: string]: [number, number] } = {
-	// 	U: [0, -1],
-	// 	D: [0, 1],
-	// 	L: [-1, 0],
-	// 	R: [+1, 0]
-	// };
-
-	// // Function to generate the style and track the path
-	// const getStyle = () => {
-	// 	console.log('here');
-
-	// 	// Can't go back
-	// 	let usableArray = moves.filter((v) => v !== antonyms[lastMove]);
-
-	// 	// Restrict moves based on grid edges
-	// 	if (prevY === 0) {
-	// 		usableArray = usableArray.filter((v) => v !== 'D');
-	// 	}
-
-	// 	const direction = usableArray[Math.floor(Math.random() * usableArray.length)];
-
-	// 	const [xFactor, yFactor] = directions[direction];
-	// };
-</script>
+<svelte:head>
+	<title>Accueil - Antoine Duvauchelle</title>
+	<meta property="og:type" content="page" />
+	<meta property="og:title" content="Accueil - Antoine Duvauchelle" />
+</svelte:head>
 
 <div class="container">
-	<!-- {#each $elements as index}
-		{#if index === 0}
-			<div class="square" onmouseenter={() => handleMouseEnter()}>
-				{index + 1}
-			</div>
-		{:else}
-			{@const items = getStyle()}
-			{#each items as item}
-				<div
-					style={`transform: translate(${item[0]}%, ${item[1]}%)`}
-					class="square"
-					onmouseenter={() => handleMouseEnter()}
-				>
-					{item[0]}: {item[1]}, {item[2]}
-				</div>
-			{/each}
-		{/if}
-	{/each} -->
+	<div class="cube" style="--duration: 1s; --delay: 0s; --bottom: 2rem"></div>
+	<div class="cube" style="--duration: 0.9s; --delay: 1s; --bottom: 4rem"></div>
+	<div class="cube" style="--duration: 0.8s; --delay:1.9s; --bottom: 6rem"></div>
+	<div class="cube" style="--duration: 0.7s; --delay:2.7s; --bottom: 8rem"></div>
+	<div class="cube" style="--duration: 0.6s; --delay:3.4s; --bottom: 10rem"></div>
+	<div class="cube" style="--duration: 0.5s; --delay:4s; --bottom: 12rem"></div>
+	<div class="cube" style="--duration: 0.4s; --delay:4.5s; --bottom: 14rem"></div>
+	<div class="cube" style="--duration: 0.3s; --delay:4.9s; --bottom: 16rem"></div>
+	<div class="cube" style="--duration: 0.2s; --delay:5.2s; --bottom: 18rem"></div>
+	<div class="cube" style="--duration: 0.1s; --delay:5.4s; --bottom: 20rem"></div>
+	<div class="cube" style="--duration: 0s; --delay:5.5s; --bottom: 22rem"></div>
 </div>
 
 <style>
 	.container {
 		color: red;
-		width: 100vw;
-		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		height: calc(100vh - 55px);
 	}
 
-	.square {
+	@keyframes hitBottom {
+		0% {
+			bottom: 100%;
+			opacity: 0;
+		}
+
+		100% {
+			bottom: var(--bottom);
+			opacity: 1;
+		}
+	}
+
+	.cube {
+		animation: hitBottom var(--duration) ease-in-out var(--delay);
+		animation-fill-mode: forwards;
 		aspect-ratio: 1;
-		background-color: #e0e0e0;
-		border-radius: 1px;
-		height: 4rem;
-		overflow: hidden;
+		width: 32px;
+		background-color: #ffde21;
 		position: absolute;
+		border: 1px solid #ffde21;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: var(--bottom);
+		margin-bottom: calc(0.2 * var(--bottom));
+		opacity: 0;
 	}
 
-	.square {
-		left: 50%;
+	.cube::before {
+		content: '';
+		height: 13px;
+		width: 32px;
 		position: absolute;
-		top: 90%;
+		border: 1px solid #ffde21;
+		transform: rotateX(45deg) skew(-45deg) translate(8px, 1px);
+		left: 0;
+		bottom: 100%;
+	}
+
+	.cube::after {
+		content: '';
+		height: 32px;
+		width: 19px;
+		position: absolute;
+		border: 1px solid #ffde21;
+		transform: rotateY(45deg) skewY(-26deg) translate(-2px, -5px);
+		left: 100%;
+		bottom: 0;
 	}
 </style>

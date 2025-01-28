@@ -7,14 +7,14 @@
 		<nav id="menu">
 			<ul>
 				<li>
-					<a href="/">home</a>
+					<a href="/">accueil</a>
 				</li>
 				<li>
 					<a href="/posts">blog</a>
 				</li>
-				<!-- <li>
-					<a href="/about">about</a>
-				</li> -->
+				<li>
+					<a href="/about">à propos</a>
+				</li>
 			</ul>
 		</nav>
 	</header>
@@ -41,6 +41,10 @@
 		gap: 1rem;
 		list-style: none;
 		margin: 0;
+	}
+
+	li:hover a {
+		color: #ffde21;
 	}
 
 	/* .menu[aria-hidden='false'] {

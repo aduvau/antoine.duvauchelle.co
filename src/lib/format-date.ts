@@ -1,10 +1,19 @@
-export const formattedDate = (date: string) => {
-	const splittedDate = new Date(date.split('-').reverse().join('-'));
+type DateOptions = {
+	weekday: 'short' | 'long' | 'narrow';
+	day: '2-digit' | 'numeric' | undefined;
+	month: 'short' | 'long' | 'narrow' | '2-digit' | 'numeric' | undefined;
+	year: '2-digit' | 'numeric' | undefined;
+};
 
-	return new Intl.DateTimeFormat('en-GB', {
-		weekday: 'short',
+export const formattedDate = (date: string) => {
+	const options: DateOptions = {
+		weekday: 'long',
 		day: '2-digit',
 		month: 'short',
 		year: 'numeric'
-	}).format(splittedDate);
+	};
+
+	const preformattedDate = date.split('-').reverse().join('-');
+
+	return new Date(preformattedDate).toLocaleDateString('fr-FR', options);
 };
