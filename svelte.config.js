@@ -4,16 +4,23 @@ import path from 'path';
 
 import { mdsvex } from 'mdsvex';
 
-/** @type {import('mdsvex').MdsvexOptions} */
-const mdsvexOptions = {
-	extensions: ['.md']
-};
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
 	// for more information about preprocessors
-	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
+	extensions: ['.svelte', '.md', '.svx'],
+	preprocess: [
+		vitePreprocess(),
+		mdsvex({
+			smartypants: true,
+			remarkPlugins: [],
+			rehypePlugins: [],
+			components: {
+				AudioPlayer: path.resolve('src/lib/AudioPlayer.svelte')
+			},
+			extensions: ['.md']
+		})
+	],
 
 	kit: {
 		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
@@ -24,9 +31,7 @@ const config = {
 	alias: {
 		'@types': path.resolve('./src/types'),
 		'@lib': path.resolve('./src/lib')
-	},
-
-	extensions: ['.svelte', '.md']
+	}
 };
 
 export default config;

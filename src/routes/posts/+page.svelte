@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Container from '../../components/Container.svelte';
+	import Cube from '../../components/Cube.svelte';
 	import { formattedDate } from '../../lib/format-date';
 
 	let { data } = $props();
@@ -10,70 +12,39 @@
 	<meta property="og:title" content="Blog - Antoine Duvauchelle" />
 </svelte:head>
 
-<div class="posts">
-	{#each data.posts as post}
-		<a href={`/posts/${post.slug}`}>
-			<card>
-				<div class="cube"></div>
-				<div class="content">
-					<h3>
-						{post.title}
-					</h3>
-					<p>
-						{post.subtitle} -
-						<span class="published-at">{formattedDate(post.date)}</span>
-					</p>
-				</div>
-			</card>
-		</a>
-	{:else}
-		<p>Désolé, il n'y a rien par ici.</p>
-	{/each}
-</div>
+<Container>
+	<div class="posts">
+		{#each data.posts as post, i}
+			<a href={`/posts/${post.slug}`}>
+				<card>
+					<div class="cube-container">
+						<Cube id={null} aria={null} onclick={null} className="no-button" style={null} />
+					</div>
+					<div class="content">
+						<h3>
+							{post.title}
+						</h3>
+						<p>
+							{post.subtitle} -
+							<span class="published-at">{formattedDate(post.date)}</span>
+						</p>
+					</div>
+				</card>
+			</a>
+		{:else}
+			<p>Désolé, il n'y a rien par ici.</p>
+		{/each}
+	</div>
+</Container>
 
 <style>
 	.posts {
 		display: flex;
 		flex-direction: column;
-		padding: 1rem;
-	}
-
-	.cube {
-		aspect-ratio: 1;
-		width: 32px;
-		background-color: #ffde21;
-		border: 1px solid #ffde21;
-		left: 0;
-		top: 50%;
-		transform: scale(0.5);
-		transition: transform 0.2s ease-in-out;
-		margin-top: 0.5rem;
-	}
-
-	.cube::before {
-		content: '';
-		height: 13px;
-		width: 32px;
-		position: absolute;
-		border: 1px solid #ffde21;
-		transform: rotateX(45deg) skew(-45deg) translate(8px, 1px);
-		left: 0;
-		bottom: 100%;
-	}
-
-	.cube::after {
-		content: '';
-		height: 32px;
-		width: 19px;
-		position: absolute;
-		border: 1px solid #ffde21;
-		transform: rotateY(45deg) skewY(-26deg) translate(-2px, -5px);
-		left: 100%;
-		bottom: 0;
+		margin-top: 1.2rem;
 	}
 
 	card {
-		padding: 1.6rem;
 		position: relative;
 		transition: all 0.2s ease-in-out;
 		align-items: flex-start;
@@ -82,13 +53,17 @@
 		display: flex;
 	}
 
-	card:hover .cube {
+	.cube-container {
+		flex: 1;
+	}
+
+	card:hover :global(.cube.no-button) {
 		transition: transform 0.2s ease-in-out;
 		transform: rotate(180deg) scale(0.5);
 	}
 
 	h3 {
-		color: #ffde21;
+		color: var(--brand);
 		font-size: 2rem;
 		font-weight: 400;
 	}

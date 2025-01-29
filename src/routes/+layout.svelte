@@ -2,22 +2,22 @@
 	import '../app.css';
 </script>
 
+<header>
+	<nav id="menu">
+		<ul>
+			<li>
+				<a href="/">accueil</a>
+			</li>
+			<li>
+				<a href="/posts">blog</a>
+			</li>
+			<li>
+				<a href="/contact">contact</a>
+			</li>
+		</ul>
+	</nav>
+</header>
 <main>
-	<header>
-		<nav id="menu">
-			<ul>
-				<li>
-					<a href="/">accueil</a>
-				</li>
-				<li>
-					<a href="/posts">blog</a>
-				</li>
-				<li>
-					<a href="/about">à propos</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
 	<slot />
 </main>
 
@@ -44,7 +44,7 @@
 	}
 
 	li:hover a {
-		color: #ffde21;
+		color: var(--brand);
 	}
 
 	/* .menu[aria-hidden='false'] {

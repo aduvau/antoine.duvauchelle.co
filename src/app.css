@@ -1,25 +1,39 @@
+:root {
+	/* Colors */
+	--dark: #181818;
+	--light: #c8c8c8;
+	--lighter: #e0e0e0;
+	--brand: #ffde21;
+
+	/* Breakpoints */
+	--sm: 720px;
+}
+
 body {
-	background-color: #181818;
-	color: #e0e0e0;
+	background-color: var(--dark);
+	color: var(--lighter);
 	font-family: 'Nunito', sans-serif;
 	margin: 0;
 	padding: 0;
 }
 
 a {
-	color: #c8c8c8;
+	color: var(--light);
 	text-decoration: none;
 }
 
 h2,
-h3 {
+h3,
+h4 {
 	margin: 0;
 }
 
 h1 {
+	color: var(--brand);
 	font-size: 1.8rem;
 	font-weight: 700;
-	margin: 1.1rem 0;
+	margin-bottom: 1.2rem;
+	margin-top: 0;
 }
 
 h2 {
@@ -33,4 +47,8 @@ p {
 	font-size: 1rem;
 	font-weight: 200;
 	margin: 0;
+}
+
+code {
+	font-family: 'Fira Code', sans-serif !important;
 }
