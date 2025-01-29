@@ -7,7 +7,7 @@
 		'My favorite (for professional use): Svelte!',
 		'A few techs I use: Ruby on Rails, React, Next, Python, Node...',
 		"I'm mostly a front-end dev.",
-		"I've been working for start-ups and scale-ups for > 10 yo. I have one obsession: make my users' journey cooler.",
+		"I've been working for start-ups and scale-ups for > 10 y. I have one obsession: make my users' journey cooler.",
 		"I'm a web dev.",
 		'He / him.',
 		"Hey, I'm Antoine !"
