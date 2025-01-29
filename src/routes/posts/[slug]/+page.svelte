@@ -11,6 +11,7 @@
 	<title>{`${data.meta.surtitle} : ${data.meta.title} - Antoine Duvauchelle`}</title>
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={`${data.meta.title} - Antoine Duvauchelle`} />
+	<meta name="fediverse:creator" content="@ntnuu@tooter.social">
 </svelte:head>
 
 <Container>
