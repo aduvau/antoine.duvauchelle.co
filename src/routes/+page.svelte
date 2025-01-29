@@ -1,18 +1,20 @@
 <script lang="ts">
-	import Cube from '../components/Cube.svelte';
+	import Cube from '$lib/Cube.svelte';
 
-	let visibleBio: number = $state(999);
+	let visibleBio: number = $state(-1);
 
 	const bios = [
-		'Mais ma préférée : Svelte !',
-		"Quelques technos que j'utilise : Ruby on Rails, React, Next, Python, Node...",
-		'Je fais principalement du front.',
-		'Je travaille depuis plus de dix ans pour des entreprises innovantes avec une obsession : simplifier la vie des utilisateurs.',
-		'Je suis développeur web.',
-		"Salut, je m'appelle Antoine !"
+		'My favorite (for professional use): Svelte!',
+		'A few techs I use: Ruby on Rails, React, Next, Python, Node...',
+		"I'm mostly a front-end dev.",
+		"I've been working for start-ups and scale-ups for > 10 yo. I have one obsession: make my users' journey cooler.",
+		"I'm a web dev.",
+		'He / him.',
+		"Hey, I'm Antoine !"
 	];
 
 	let numberOfBios = $derived(bios.length);
+	let topNum = $derived(numberOfBios - 1);
 </script>
 
 <svelte:head>
@@ -23,21 +25,25 @@
 
 <div class="container">
 	{#each Array.from({ length: numberOfBios }) as _, i}
+		{@const id = topNum - i}
 		<Cube
-			id={i.toString()}
+			id={id.toString()}
 			aria="show-biography"
-			className={`button ${i == visibleBio ? 'blinking' : 'static'}`}
+			className={`button ${id == visibleBio ? 'blinking' : 'static'}`}
 			style={`--duration: ${1 - i * 0.1}s; --delay: ${i - i * 0.2}s; --bottom: ${2 + i * 2}rem; --end-delay:
 		${numberOfBios - 1 + i * 0.01}s;`}
 			onclick={() => {
-				visibleBio = i;
+				visibleBio = id;
 			}}
 		/>
 	{/each}
 
 	<div class="biographies">
 		{#each bios as bio, i}
-			<p id={i.toString()} class={`bio ${i === visibleBio ? 'visible' : 'hidden'}`}>{bio}</p>
+			{@const id = topNum - i}
+			<p id={id.toString()} class={`bio ${id <= visibleBio ? 'visible' : 'hidden'}`}>
+				{bio}
+			</p>
 		{/each}
 	</div>
 </div>

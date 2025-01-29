@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Container from '../../components/Container.svelte';
-	import Cube from '../../components/Cube.svelte';
+	import Cube from '$lib/Cube.svelte';
 	import { formattedDate } from '../../lib/format-date';
 
 	let { data } = $props();

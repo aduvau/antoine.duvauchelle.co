@@ -15,5 +15,5 @@ export const formattedDate = (date: string) => {
 
 	const preformattedDate = date.split('-').reverse().join('-');
 
-	return new Date(preformattedDate).toLocaleDateString('fr-FR', options);
+	return new Date(preformattedDate).toLocaleDateString('en-US', options);
 };

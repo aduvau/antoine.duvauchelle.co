@@ -9,34 +9,64 @@
 </svelte:head>
 
 <Container>
-	<h1>Contactez-moi</h1>
+	<h1>Check me there</h1>
+	<ul>
+		<li>
+			<a href="https://tooter.social/@ntnuu" aria-label="mastodon" target="_blank"
+				><img src="/svgs/mastodon.svg" alt="mastodon" /></a
+			>
+		</li>
+		<li>
+			<a
+				href="https://www.linkedin.com/in/antoine-duvauchelle/"
+				aria-label="linkedin"
+				target="_blank"><img src="/svgs/linkedin.svg" alt="linkedin" /></a
+			>
+		</li>
+		<li>
+			<a href="https://github.com/aduvau" aria-label="github" target="_blank"
+				><img src="/svgs/github.svg" alt="github" /></a
+			>
+		</li>
+	</ul>
+	<h2>Or drop me an email</h2>
 	<form action="?/sendMail" method="POST">
 		<label>
-			Votre email :
+			Your email
 			<input type="email" name="email" />
 		</label>
 		<label>
-			Votre nom :
+			Your name:
 			<input type="text" name="name" />
 		</label>
 		<label>
-			Votre message :
+			Your message:
 			<textarea name="message"></textarea>
 		</label>
-		<button type="submit">Envoyer</button>
+		<button type="submit">Send</button>
 	</form>
 </Container>
 
 <style>
+	h2 {
+		color: var(--brand);
+		font-size: 1.6rem;
+		font-style: normal;
+		text-align: center;
+		text-transform: uppercase;
+	}
 	form {
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
+		margin: 2rem 0;
 	}
 
 	label {
 		display: flex;
 		flex-direction: column;
+		text-transform: uppercase;
+		font-weight: 200;
 	}
 
 	input,
@@ -68,5 +98,31 @@
 	button:hover {
 		transform: translateY(10%);
 		transition: transform 0.2s ease-out;
+	}
+
+	ul {
+		align-items: center;
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		margin: 3rem 0;
+	}
+
+	li a img {
+		background-color: var(--light);
+		border-radius: 50%;
+		padding: 0.4rem;
+		transition: all 0.3s ease-in-out;
+	}
+
+	li a:hover img {
+		display: inline-block;
+		background-color: var(--brand);
+		transform: translateY(10%);
+		transition: all 0.3s ease-in-out;
+	}
+
+	li:before {
+		content: '';
 	}
 </style>

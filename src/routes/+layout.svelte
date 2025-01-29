@@ -17,14 +17,16 @@
 		</ul>
 	</nav>
 </header>
+
 <main>
 	<slot />
 </main>
 
+<footer><div><span class="copyleft">©</span> 2025 - Antoine Duvauchelle</div></footer>
+
 <style>
 	main {
 		position: relative;
-		height: 100vh;
 	}
 
 	header {
@@ -36,33 +38,32 @@
 		width: 100%;
 	}
 
-	nav ul {
+	header nav ul {
 		display: flex;
 		gap: 1rem;
-		list-style: none;
-		margin: 0;
 	}
 
-	li:hover a {
+	header nav ul li:hover a {
 		color: var(--brand);
 	}
 
-	/* .menu[aria-hidden='false'] {
-		display: block;
-	} */
-	/* nav {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		padding: 1rem 0;
-		gap: 1.2rem;
-	}
-	a {
-		transition: transform 0.1s ease-out;
+	footer {
+		bottom: 7rem;
+		right: -5rem;
+		position: fixed;
+		transform: rotateZ(-90deg);
+		opacity: 0.1;
+		transition: opacity 0.2s ease-in-out;
 	}
 
-	a:hover {
-		transform: rotate(-10deg);
-		transition: transform 0.1s ease-out;
-	} */
+	footer:hover {
+		opacity: 1;
+		transition: opacity 0.2s ease-in-out;
+	}
+
+	footer span.copyleft {
+		display: inline-block;
+		font-size: 1.2rem;
+		transform: rotateY(180deg);
+	}
 </style>

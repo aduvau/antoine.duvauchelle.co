@@ -1,5 +1,31 @@
 <script lang="ts">
-	export let src: string;
+	let {
+		src,
+		className,
+		hasControls = true,
+		wrapperClassName = undefined,
+		buttonText = undefined
+	} = $props();
 </script>
 
-<audio {src} controls></audio>
+{#snippet player()}
+	<audio {src} class={className} controls={hasControls}></audio>
+{/snippet}
+
+{#if wrapperClassName}
+	<div class={wrapperClassName}>
+		<button>
+			<img src="/svgs/play.svg" alt={buttonText} />
+		</button>
+		{@render player()}
+	</div>
+{:else}
+	{@render player()}
+{/if}
+
+<style>
+	button {
+		border: none;
+		background: transparent;
+	}
+</style>
