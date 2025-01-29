@@ -9,21 +9,35 @@
 
 	let audioPlayer: HTMLAudioElement;
 
-	let imageSrc = $derived.by(() =>
-		audioPlayer && audioPlayer.paused ? '/svgs/pause.svg' : '/svgs/play.svg'
-	);
+	let imageSrc = $state('/svgs/play.svg');
 
-	const handleClick = (e: MouseEvent) => {
+	const updateImageSrc = () => {
+		imageSrc = audioPlayer && !audioPlayer.paused ? '/svgs/pause.svg' : '/svgs/play.svg';
+	};
+
+	const handleClick = () => {
 		if (audioPlayer) {
 			if (audioPlayer.paused) {
 				audioPlayer.play();
 			} else {
 				audioPlayer.pause();
 			}
+			updateImageSrc();
 		}
 	};
 
-	$inspect(imageSrc);
+	$effect(() => {
+		if (audioPlayer) {
+			audioPlayer.addEventListener('play', updateImageSrc);
+			audioPlayer.addEventListener('pause', updateImageSrc);
+		}
+		return () => {
+			if (audioPlayer) {
+				audioPlayer.removeEventListener('play', updateImageSrc);
+				audioPlayer.removeEventListener('pause', updateImageSrc);
+			}
+		};
+	});
 </script>
 
 {#snippet player()}

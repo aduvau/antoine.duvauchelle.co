@@ -2,8 +2,8 @@
 surtitle: 'API Exploration: Web Audio API'
 title: Episode 1. The Rise, Fall, and Revival of the <audio> Tag
 subtitle: Of all standard APIs, none is more playful than the Web Audio API (at least in my opinion). Let's add some CSS rainbow magic to your music!
-date: 04-02-2025
-published: false
+date: 29-01-2025
+published: true
 categories:
   - 'Web APIs'
   - 'JavaScript'
@@ -153,7 +153,7 @@ if (button) {
 }
 ```
 
-Let's try this (I've taken the liberty to add some CSS styling, you'll find it below):
+Let's try this (I've taken the liberty to add some CSS styling, you'll find it below, and some additional JS for the play / pause image switch):
 
 <AudioPlayer src="/audio/example.mp3" className="with-wrapper-1" wrapperClassName="wrapper-1" hasControls={false} buttonText="Play / pause" />
 

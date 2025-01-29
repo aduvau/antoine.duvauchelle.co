@@ -25,9 +25,9 @@
 							{post.title}
 						</h3>
 						<p>
-							{post.subtitle} -
-							<span class="published-at">{formattedDate(post.date)}</span>
+							{post.subtitle}
 						</p>
+						<p class="published-at">{formattedDate(post.date)}</p>
 					</div>
 				</card>
 			</a>
@@ -70,5 +70,9 @@
 
 	.published-at {
 		font-weight: 400;
+	}
+
+	.content p {
+		color: var(--light);
 	}
 </style>
