@@ -6,7 +6,7 @@
 	<nav id="menu">
 		<ul>
 			<li>
-				<a href="/">accueil</a>
+				<a href="/">home</a>
 			</li>
 			<li>
 				<a href="/posts">blog</a>
