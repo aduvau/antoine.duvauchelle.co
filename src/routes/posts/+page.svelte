@@ -27,7 +27,7 @@
 			</card>
 		</a>
 	{:else}
-		<p>Sorry, we have nothing to show you.</p>
+		<p>Désolé, il n'y a rien par ici.</p>
 	{/each}
 </div>
 
@@ -35,6 +35,7 @@
 	.posts {
 		display: flex;
 		flex-direction: column;
+		padding: 1rem;
 	}
 
 	.cube {
