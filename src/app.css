@@ -21,7 +21,7 @@ body {
 }
 
 a {
-	color: var(--light);
+	color: var(--brand);
 	text-decoration: none;
 }
 

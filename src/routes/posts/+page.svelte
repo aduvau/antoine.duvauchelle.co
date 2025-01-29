@@ -32,7 +32,7 @@
 				</card>
 			</a>
 		{:else}
-			<p>Désolé, il n'y a rien par ici.</p>
+			<p>Sorry, there's nothing here.</p>
 		{/each}
 	</div>
 </Container>

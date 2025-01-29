@@ -66,4 +66,8 @@
 		font-size: 1.2rem;
 		transform: rotateY(180deg);
 	}
+
+	a {
+		color: var(--light);
+	}
 </style>

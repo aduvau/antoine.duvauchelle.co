@@ -1,7 +1,7 @@
 ---
 surtitle: 'API Exploration: Web Audio API'
-title: Episode 1. Splendor and decay (and splendor again) of the <audio> tag
-subtitle: Among standard APIs, none is more playful than the Web Audio API - at least in my opinion. Let's drop some CSS rainbow in your music!
+title: Episode 1. The Rise, Fall, and Revival of the <audio> Tag
+subtitle: Of all standard APIs, none is more playful than the Web Audio API (at least in my opinion). Let's add some CSS rainbow magic to your music!
 date: 04-02-2025
 published: false
 categories:
@@ -25,7 +25,7 @@ categories:
 
 First things first, we need a sound file and an audio player.
 
-The sound file is quite easy to find: you can get thousands free of charge (and legal) sounds on [Pixabay](https://pixabay.com/en/music/search/) for instance.
+Finding a sound file is easy—you can get thousands of free (and legal) sounds on [Pixabay](https://pixabay.com/en/music/search/), for instance.
 
 Now the audio player:
 
@@ -35,7 +35,7 @@ Now the audio player:
 <audio src="example.mp3" controls />
 ```
 
-Style does not matter for now. I just applied a few properties to be sure that it's easy enough to see the player on this page:
+For now, styling isn't important. I only applied a few properties to ensure the player is easily visible on this page:
 
 ```css
 audio {
@@ -45,7 +45,7 @@ audio {
 }
 ```
 
-We could talk for hours about the `<audio>` element, introduced with HTML5. Yes, it's amazing, yes, it's perfectly standard, yes, it will look different depending on your browser because it is not styled by default. You can learn [all of that and more on MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/audio), so we'll keep it short.
+We could talk for hours about the `<audio>` element, introduced in HTML5. Yes, it's amazing. Yes, it's a standard. And yes, it looks different across browsers since it's unstyled by default. You can learn [all of that and more on MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/audio), so we'll keep it short.
 
 A few interesting attributes for us:
 
@@ -76,7 +76,7 @@ One solution here: wrap it into a div and style the div.
 
 And iiiiiiiiiit's... not going well.
 
-Our problem is the controls, that are browser dependant. So not only our audio player looks awful, but it accepts different shades of awfulness depending on the browser.
+Our problem is the controls, which are browser-dependent. So, not only does our audio player look awful, but it also embraces different shades of awfulness depending on the browser
 
 On Firefox:
 
@@ -93,7 +93,7 @@ Nice, huh?
 
 ## Enter javascript
 
-This is why it's more than usual to just call the audio element without any controls, and deal with everything else with "fake" elements:
+This is why it's common practice to call the `<audio>` element without controls and handle everything else using custom elements:
 
 ```html
 <audio src="example.mp3" />
@@ -123,14 +123,14 @@ OK, so, let's say we need a box, this box should be clearly separated from the r
 	<button>Play / pause</button>
 </div>
 
-I know what you're going to say: it's not working. Nope, it's not. Which is kind of evident if you think about it: we have a button, but it's not supposed to do anything. We are going to have to:
+I know what you're thinking: 'It's not working.' And you're right—it's not. Which makes sense, because we have a button, but it doesn’t do anything yet. We are going to have to:
 
 - <Cube className="content-li" /> Reference the button
 - <Cube className="content-li" /> Listen to the click
 - <Cube className="content-li" /> Get the `<audio>` tag
 - <Cube className="content-li" /> Give the instruction to the `<audio>` tag: "Play the file"
 - <Cube className="content-li" /> If we click again on the button, it's supposed to pause... Which means that we'll actually have to do some programming here. If the status is "paused", it should play. If it's "playing", is should be paused.
-- <Cube className="content-li" /> And... Probably something else, you figure. Well, you're perfectly right. But let's dive later here, and start simple.
+- <Cube className="content-li" /> And… probably something else, right? Yep, you're absolutely right. But let's dive later here, and start simple.
 
 ```javascript
 // Assign our button and our audio elements to variables
@@ -141,30 +141,29 @@ const audioPlayer = document.querySelector('audio');
 if (button) {
 	button.addEventListener('click', (event) => {
 		if (audioPlayer) {
-			// Errrrrrrrrh, now what?
+			if (audioPlayer.paused) {
+				audioPlayer.play();
+				button.textContent = 'Pause';
+			} else {
+				audioPlayer.pause();
+				button.textContent = 'Play';
+			}
 		}
 	});
 }
 ```
 
-Now, what? I mean, we could go further. We haven't done all of our pseudo-code list above. So we could still create some sort of local state, assign it to `playing`, initialize it to `false` and so on. But if we want to do it "as in real life", it's definitely not in that order that we'd do it.
+Let's try this (I've taken the liberty to add some CSS styling, you'll find it below):
 
-We'd start with the simplest task: play the file. Add tests, avoid regression, move to the next, etc. So we're stuck, and what do we do in these cases?
+<AudioPlayer src="/audio/example.mp3" className="with-wrapper-1" wrapperClassName="wrapper-1" hasControls={false} buttonText="Play / pause" />
+
+Cool, huh? But now, what?
 
 **We use [HOWLER.JS](https://github.com/goldfire/howler.js#)!!!!!!!!!!**
 
 Nah, kidding, of course. We'll dive into the Web Audio API. That's for the next episode, and frankly, that might just be the right time to acknowledge how Howler.js and other libs are amazing. Check it, read the philosophy of it, try to get some implementation design. Then we'll get back to our Web Audio API in **"Episode 2. These waves are moving, bro"**.
 
-For Episode 1, I'll leave you with some CSS, so you don't get the wrong impression that we did all of this in vain:
-
-<AudioPlayer src="/audio/example.mp3" className="with-wrapper-1" wrapperClassName="wrapper-1" hasControls={false} buttonText="Play / pause" />
-
-```html
-<div class="audio-player">
-	<audio src="example.mp3" />
-	<button>Play / pause</button>
-</div>
-```
+Before wrapping up Episode 1, here's some CSS — just so you don't think all of this was in vain:
 
 ```css
 .audio-player {
