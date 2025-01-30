@@ -161,7 +161,7 @@ Cool, huh? But now, what?
 
 **We use [HOWLER.JS](https://github.com/goldfire/howler.js#)!!!!!!!!!!**
 
-Nah, kidding, of course. We'll dive into the Web Audio API. That's for the next episode, and frankly, that might just be the right time to acknowledge how Howler.js and other libs are amazing. Check it, read the philosophy of it, try to get some implementation design. Then we'll get back to our Web Audio API in **"Episode 2. These waves are moving, bro"**.
+Nah, kidding, of course. We'll dive into the Web Audio API. That's for the next episode, and frankly, that might just be the right time to acknowledge how Howler.js and other libs are amazing. Check it, read the philosophy of it, try to get some implementation design. Then we'll get back to our Web Audio API in **"Episode 2. The <audio> tag never stops trying"**.
 
 Before wrapping up Episode 1, here's some CSS — just so you don't think all of this was in vain:
 
