@@ -12,7 +12,7 @@ categories:
 
 <script>
   import AudioPlayer from '$lib/AudioPlayer.svelte';
-  import Cube from '$lib/Cube.svelte';
+  import CubeSVG from '$lib/CubeSVG.svelte';
 </script>
 
 > ### Note
@@ -49,10 +49,10 @@ We could talk for hours about the `<audio>` element, introduced in HTML5. Yes, i
 
 A few interesting attributes for us:
 
-- <Cube className="content-li" /> `autoplay` allows you to autoplay your file ;
-- <Cube className="content-li" /> `loop` activates loop playing ;
-- <Cube className="content-li" /> `muted` to mute the sound ;
-- <Cube className="content-li" /> and, of course, `controls`, which allows us to display an embryo of audio player with our browser's defaults (play, pause, volume, duration / reading status).
+- <CubeSVG height={21} width={20} /> `autoplay` allows you to autoplay your file ;
+- <CubeSVG height={21} width={20} /> `loop` activates loop playing ;
+- <CubeSVG height={21} width={20} /> `muted` to mute the sound ;
+- <CubeSVG height={21} width={20} /> and, of course, `controls`, which allows us to display an embryo of audio player with our browser's defaults (play, pause, volume, duration / reading status).
 
 There's plenty more there that could be useful, but those are the main that will allow us to directly control our sound, or provide us with an interface to do it.
 
@@ -125,12 +125,12 @@ OK, so, let's say we need a box, this box should be clearly separated from the r
 
 I know what you're thinking: 'It's not working.' And you're right—it's not. Which makes sense, because we have a button, but it doesn’t do anything yet. We are going to have to:
 
-- <Cube className="content-li" /> Reference the button
-- <Cube className="content-li" /> Listen to the click
-- <Cube className="content-li" /> Get the `<audio>` tag
-- <Cube className="content-li" /> Give the instruction to the `<audio>` tag: "Play the file"
-- <Cube className="content-li" /> If we click again on the button, it's supposed to pause... Which means that we'll actually have to do some programming here. If the status is "paused", it should play. If it's "playing", is should be paused.
-- <Cube className="content-li" /> And… probably something else, right? Yep, you're absolutely right. But let's dive later here, and start simple.
+- <CubeSVG height={21} width={20} /> Reference the button
+- <CubeSVG height={21} width={20} /> Listen to the click
+- <CubeSVG height={21} width={20} /> Get the `<audio>` tag
+- <CubeSVG height={21} width={20} /> Give the instruction to the `<audio>` tag: "Play the file"
+- <CubeSVG height={21} width={20} /> If we click again on the button, it's supposed to pause... Which means that we'll actually have to do some programming here. If the status is "paused", it should play. If it's "playing", is should be paused.
+- <CubeSVG height={21} width={20} /> And… probably something else, right? Yep, you're absolutely right. But let's dive later here, and start simple.
 
 ```javascript
 // Assign our button and our audio elements to variables

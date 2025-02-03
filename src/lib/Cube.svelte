@@ -1,4 +1,6 @@
 <script lang="ts">
+	import CubeSVG from './CubeSVG.svelte';
+
 	type Props = {
 		onclick: (() => void) | null | undefined;
 		aria: string | null | undefined;
@@ -9,7 +11,7 @@
 	let { onclick, aria, className, id, style }: Props = $props();
 </script>
 
-<button {id} class={`cube ${className}`} {style} {onclick} aria-label={aria}></button>
+<button {id} class={`cube ${className}`} {style} {onclick} aria-label={aria}><CubeSVG /></button>
 
 <style>
 	@keyframes hitBottom {
@@ -52,11 +54,9 @@
 		}
 	}
 
-	.cube {
-		aspect-ratio: 1;
-		background-color: var(--brand);
-		border: 1px solid var(--brand);
-		width: 32px;
+	button {
+		background: none;
+		border: none;
 	}
 
 	.cube.button {
@@ -82,28 +82,6 @@
 		position: relative;
 		transition: transform 0.2s ease-in-out;
 		margin-top: 0.5rem;
-	}
-
-	.cube::before {
-		content: '';
-		height: 13px;
-		width: 30px;
-		position: absolute;
-		border: 1px solid var(--brand);
-		transform: rotateX(45deg) skew(-45deg) translate(8px, 1px);
-		left: 0;
-		bottom: 100%;
-	}
-
-	.cube::after {
-		content: '';
-		height: 30px;
-		width: 19px;
-		position: absolute;
-		border: 1px solid var(--brand);
-		transform: rotateY(45deg) skewY(-26deg) translate(-2px, -5px);
-		left: 100%;
-		bottom: 0;
 	}
 
 	.cube.blinking {
