@@ -13,8 +13,8 @@
 
 <div class="first-layer">
 	<div class="content">
-		<Cubes visibleEls={visibleBios} length={numberOfBios} />
-		<div class="biographies">
+		<!-- <Cubes visibleEls={visibleBios} length={numberOfBios} /> -->
+		<!-- <div class="biographies">
 			<p class={`bio bio-0 ${visibleBios.indexOf(0) !== -1 ? 'visible' : 'hidden'}`}>
 				Hey, I'm Antoine!
 			</p>
@@ -42,7 +42,7 @@
 					<span>Svelte</span><span>Ruby on Rails</span><span>Figma</span><span>Git</span>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 
@@ -55,6 +55,9 @@
 		padding: 2rem 0;
 		max-width: 80rem;
 		position: relative;
+		background: url('imgs/home.jpg') rgba(0, 0, 0, 0.3);
+		background-blend-mode: multiply;
+		background-size: cover;
 	}
 
 	.content {
