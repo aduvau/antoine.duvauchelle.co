@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Container from '../../components/Container.svelte';
-	import Cube from '$lib/Cube.svelte';
 	import { formattedDate } from '../../lib/format-date';
+	import CubeSVG from '../../lib/CubeSVG.svelte';
 
 	let { data } = $props();
 </script>
@@ -17,9 +17,7 @@
 		{#each data.posts as post, i}
 			<a href={`/posts/${post.slug}`}>
 				<card>
-					<div class="cube-container">
-						<Cube id={null} aria={null} onclick={null} className="no-button" style={null} />
-					</div>
+					<CubeSVG height={21} width={20} />
 					<div class="content">
 						<h3>
 							{post.title}
@@ -47,14 +45,10 @@
 	card {
 		position: relative;
 		transition: all 0.2s ease-in-out;
-		align-items: flex-start;
+		align-items: center;
 		gap: 1rem;
 		position: relative;
 		display: flex;
-	}
-
-	.cube-container {
-		flex: 1;
 	}
 
 	card:hover :global(.cube.no-button) {
